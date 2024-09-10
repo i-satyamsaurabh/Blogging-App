@@ -11,9 +11,9 @@ body {
 .one {
     margin-top: 105px;
     display: inline-block;
-    width: 70vw;
+    width: 80vw;
     height: fit-content;
-    margin-left: 15vw;
+    margin-left: 10vw;
     background-color: rgb(255, 255, 255);
     /* border-width: 10px; */
     border-spacing: 20px;
