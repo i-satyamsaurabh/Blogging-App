@@ -57,6 +57,9 @@ def delete(id):
         db.session.commit()
     return redirect ('/')
 
+@app.route('/review')
+def review():
+    return render_template ("review.html")
 
 
 
