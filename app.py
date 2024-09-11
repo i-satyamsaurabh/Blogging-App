@@ -89,7 +89,6 @@ def update(id):
 @app.route('/like/<int:id>', methods=['POST','GET'])
 def like(id):
     post = database.query.filter_by(id=id).first()
-    post.likes = 0
     post.likes += 1
     db.session.commit()
     post=database.query.filter_by(id=id).first()
