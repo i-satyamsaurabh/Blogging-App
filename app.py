@@ -3,10 +3,16 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
 from datetime import datetime
 
+from flask_migrate import Migrate
+
+
+
+
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.db"
 db=SQLAlchemy(app)
 
+migrate = Migrate(app, db)
 
 class database(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,6 +20,7 @@ class database(db.Model):
     Date = db.Column(db.DateTime, default=datetime.utcnow)
     Content = db.Column(db.Text, nullable=False)
     Author = db.Column(db.String(20), nullable=False)
+    likes = db.Column(db.Integer, default=0)
 
     def __repr__(self) -> str:
         return f"<database {self.Title} - {self.Date}>"
@@ -79,8 +86,14 @@ def update(id):
 
 
 
-
-
+@app.route('/like/<int:id>', methods=['POST','GET'])
+def like(id):
+    post = database.query.filter_by(id=id).first()
+    post.likes = 0
+    post.likes += 1
+    db.session.commit()
+    post=database.query.filter_by(id=id).first()
+    return redirect ('/')
 
 
 

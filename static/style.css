@@ -40,7 +40,7 @@ body {
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    background-color: rgb(11, 3, 83);
+    background-color: rgb(255, 247, 180);
     height: 45px;
     padding-top: 3px;
     text-align: center;
@@ -48,7 +48,7 @@ body {
     margin-top: 55px;
     position: fixed;
     margin-left: 7vw;
-
+    border-radius: 10%;
 
 }
 
@@ -122,6 +122,7 @@ h4 {
     padding-left: 5px;
     width: 86vw;
     box-sizing: border-box;
+    border-radius: 5%;
 
 }
 

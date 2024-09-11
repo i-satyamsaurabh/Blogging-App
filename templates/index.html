@@ -14,6 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Sevillana&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
 </head>
 
@@ -63,6 +65,16 @@
                 </div>
                 <i class="blog-content">"{{ post.Content }}"</i>
                 <div class="blog-actions">
+                    <form method="POST" action="/like/{{ post.id }}">
+                        <button type="submit" class="button-round btn btn-outline-primary"
+                            style="display: flex; align-items: center; justify-content: flex-start; width: max-content; height: 5vh; box-sizing: border-box;">
+                            <i class="fas fa-thumbs-up"
+                                style="margin-right: 5px; width: max-content; box-sizing: border-box;"></i>
+                            <span>{{ post.likes or 0 }}</span>
+                        </button>
+                    </form>
+
+
                     <a href="/delete/{{ post.id }}">
                         <button type="button" class="btn btn-danger button-round">Delete</button>
                     </a>
@@ -71,6 +83,7 @@
                     </a>
                     <span class="blog-author" style="padding-right: 3px;">~ {{ post.Author }}</span>
                 </div>
+
             </div>
             {% endfor %}
         </div>
