@@ -21,9 +21,11 @@ class database(db.Model):
     Content = db.Column(db.Text, nullable=False)
     Author = db.Column(db.String(20), nullable=False)
     likes = db.Column(db.Integer, default=0)
+    Image = db.Column(db.String(100), nullable=True) 
 
     def __repr__(self) -> str:
-        return f"<database {self.Title} - {self.Date}>"
+        return f"<Database {self.Title} - {self.Date}>"
+
 
     
 
@@ -33,13 +35,21 @@ def home():
         Title = request.form['title']
         Content = request.form['content']
         Author = request.form['author']
-        post = database(Title=Title, Content=Content, Author=Author)
+
+        # Handle image upload
+        image_file = request.files.get('imageUpload')
+        image_filename = None
+        if image_file:
+            image_filename = image_file.filename
+            image_file.save(f'static/uploads/{image_filename}')
+        
+        post = database(Title=Title, Content=Content, Author=Author, Image=image_filename)
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('home'))
     
-    allpost = database.query.order_by(desc(database.Date)).all()
-    return render_template("index.html", allpost=allpost,)
+    allpost = database.query.order_by(database.Date.desc()).all()
+    return render_template("index.html", allpost=allpost)
 
 
 @app.route("/post", methods=['GET','POST'])

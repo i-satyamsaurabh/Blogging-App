@@ -47,7 +47,7 @@
     </nav>
 
     <div class="form">
-        <form method="POST" action="/">
+        <form method="POST" action="/" enctype="multipart/form-data">
             <fieldset>
                 <legend style="text-align: center;"><b>Create a New Blog Post</b></legend>
 
@@ -68,6 +68,8 @@
                     <textarea id="contentInput" name="content" class="form-control" rows="3"
                         placeholder="Enter the post content" required></textarea>
                 </div>
+                <label for="imageUpload">Upload an image (optional):</label>
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
                 <button type="submit" class="btn btn-primary">POST</button>
             </fieldset>
         </form>

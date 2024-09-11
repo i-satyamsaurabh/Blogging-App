@@ -18,6 +18,8 @@ body {
     /* border-width: 10px; */
     border-spacing: 20px;
     box-sizing: border-box;
+    overflow: auto;
+    max-width: 100%;
 
 
 
@@ -29,6 +31,7 @@ body {
     font-weight: 400;
     font-style: normal;
     box-sizing: border-box;
+    width: auto;
     overflow: auto;
     max-width: 100%;
     word-wrap: break-word;
@@ -165,4 +168,31 @@ h4 {
     text-align: right;
     margin-top: 5px;
     padding-right: 3px;
+}
+
+.blog-image-container {
+    text-align: center;
+    margin-top: 20px;
+    /* Adds space above the image */
+    margin-bottom: 20px;
+    /* Adds space below the image */
+}
+
+.blog-image {
+    width: 100%;
+    max-width: 200px;
+    /* Adjust the max-width to control the image size */
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    /* Center the image horizontally */
+}
+
+.blog-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
 }

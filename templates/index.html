@@ -58,10 +58,6 @@
                 <div class="blog-header">
                     <h5 class="blog-title">#{{ post.Title }}</h5>
                     <h6 class="blog-date">{{ post.Date.strftime('%Y-%m-%d %H:%M') }}</h6>
-
-
-
-
                 </div>
                 <i class="blog-content">"{{ post.Content }}"</i>
                 <div class="blog-actions">
@@ -74,7 +70,6 @@
                         </button>
                     </form>
 
-
                     <a href="/delete/{{ post.id }}">
                         <button type="button" class="btn btn-danger button-round">Delete</button>
                     </a>
@@ -83,11 +78,18 @@
                     </a>
                     <span class="blog-author" style="padding-right: 3px;">~ {{ post.Author }}</span>
                 </div>
-
+                {% if post.Image %}
+                <div class="blog-image-container">
+                    <div class="blog-image">
+                        <img src="{{ url_for('static', filename='uploads/' + post.Image) }}" alt="Blog Image">
+                    </div>
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
     </div>
+
 
     <footer class="footer">
         <div class="container">
