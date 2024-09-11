@@ -9,7 +9,7 @@ body {
 }
 
 .one {
-    margin-top: 102px;
+    margin-top: 100px;
     display: inline-block;
     width: 80vw;
     height: fit-content;
@@ -40,12 +40,12 @@ body {
     font-optical-sizing: auto;
     font-weight: bolder;
     font-style: normal;
-    background-color: rgb(255, 188, 188);
+    background-color: rgb(11, 3, 83);
     height: 45px;
     padding-top: 3px;
     text-align: center;
-    color: blue;
-    margin-top: 57px;
+    color: rgb(0, 0, 255);
+    margin-top: 55px;
     position: fixed;
     margin-left: 7vw;
 

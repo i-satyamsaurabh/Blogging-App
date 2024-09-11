@@ -51,15 +51,35 @@ def about():
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    del_post=database.query.filter_by(id=id).first()
-    if del_post:
-        db.session.delete(del_post)
+    post=database.query.filter_by(id=id).first()
+    if post:
+        db.session.delete(post)
         db.session.commit()
     return redirect ('/')
 
 @app.route('/review')
 def review():
     return render_template ("review.html")
+
+@app.route('/update/<int:id>', methods=['POST','GET'])
+def update(id):
+    if request.method == 'POST':
+        Title = request.form['title']
+        Content = request.form['content']
+        Author = request.form['author']
+        post=database.query.filter_by(id=id).first()
+        post.Title=Title
+        post.Content=Content
+        post.Author=Author
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('home'))
+    post=database.query.filter_by(id=id).first()
+    return render_template ("update.html", post=post)
+
+
+
+
 
 
 
