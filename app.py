@@ -21,7 +21,7 @@ class database(db.Model):
     Content = db.Column(db.Text, nullable=False)
     Author = db.Column(db.String(20), nullable=False)
     likes = db.Column(db.Integer, default=0)
-    Image = db.Column(db.String(100), nullable=True) 
+    Image = db.Column(db.String(100), nullable=True)  # New column for image filename
 
     def __repr__(self) -> str:
         return f"<Database {self.Title} - {self.Date}>"
